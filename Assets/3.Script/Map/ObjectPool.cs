@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField]
-    private int count = 15;
+    private int count;
     private Queue<GameObject> poolingQueue;
     [SerializeField] private GameObject[] tubeArr = new GameObject[3];
 
