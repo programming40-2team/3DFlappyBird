@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/3.Script/Item/ExtraLife.cs.meta
+guid: 4fc45ae051f02674aaa73d1b61e2eac9
+========
+guid: 532106a1068fe074eaefe0400fbdde93
+>>>>>>>> parent of f291ff0 (배경 스크롤):Assets/3.Script/Map/BackGroundSpawner.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
