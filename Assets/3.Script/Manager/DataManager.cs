@@ -70,7 +70,7 @@ public class DataManager : MonoBehaviour
         {
             playerScoreDataDict.Add(name, nowPlayer);
         }
-       
+
     }
     //첫 시작이 아니기에, Dictonary에서 해당 값을 찾아서 score 부분만 변경해줄 수 있도록 하였습니다. ==> 캐릭터가 죽을 경우에는 
     //addData 가 아니라 개량된 버전인 renewScroe 를 호출합니다.
@@ -108,9 +108,14 @@ public class DataManager : MonoBehaviour
     {
         playerScoreDataDict.Clear();
 
-        string format = "{\r\n  \"playerInformationList\": [\r\n{\r\n  \"name\": \"초급 컴퓨터\",\r\n  \"score\": 5\r\n},\r\n{\r\n  \"name\": \"중급 컴퓨터\",\r\n  \"score\": 10\r\n},\r\n{\r\n  \"name\": \"고급 컴퓨터\",\r\n  \"score\": 20\r\n}  ]\r\n}";
+        string format = "{\"playerInformationList\":[" +
+    "{\"name\":\"초급 컴퓨터\",\"score\":5}," +
+    "{\"name\":\"중급 컴퓨터\",\"score\":10}," +
+    "{\"name\":\"고급 컴퓨터\",\"score\":20}," +
+    "{\"name\":\"알파고\",\"score\":500}" +
+    "]}";
         File.WriteAllText(savepath, format);
-     
+
         LoadData();
 
     }

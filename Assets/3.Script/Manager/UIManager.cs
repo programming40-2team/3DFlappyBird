@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
             {
                 if (myrank != 0) break;
 
-            }  
+            }
 
         }
         //나의 랭킹 보여주기
@@ -157,9 +157,9 @@ public class UIManager : MonoBehaviour
     }
     enum RankUI
     {
-        Icon_MedalSliver=0,
-        Text_NickName=1,
-        Text_Score=2,
+        Icon_MedalSliver = 0,
+        Text_NickName = 1,
+        Text_Score = 2,
 
     }
 
