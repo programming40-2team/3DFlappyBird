@@ -21,33 +21,33 @@ public class OpenningAnimation : MonoBehaviour
     {
         titleBroken.SetActive(true);
         StartCoroutine(nameof(fadeEffect));
-      
+
     }
 
     private IEnumerator fadeEffect()
     {
-        float fadeSpeed = 0.5f;
+       float fadeSpeed = 0.5f;
 
-        Image fadeImage = titleBroken.transform.parent.GetComponent<Image>();
-        float alpha = fadeImage.color.a;
-        if (alpha == 1)
-        {
-            while (alpha > 0)
-            {
-                alpha -= Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, alpha);
-                yield return null;
-            }
-        }
-        else
-        {
-            while (alpha < 1)
-            {
-                alpha += Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, alpha);
-                yield return null;
-            }
-        }
+       Image fadeImage = titleBroken.transform.parent.GetComponent<Image>();
+       float alpha = fadeImage.color.a;
+       if (alpha == 1)
+       {
+           while (alpha > 0)
+           {
+               alpha -= Time.deltaTime * fadeSpeed;
+               fadeImage.color = new Color(0, 0, 0, alpha);
+               yield return null;
+           }
+       }
+       else
+       {
+           while (alpha < 1)
+           {
+               alpha += Time.deltaTime * fadeSpeed;
+               fadeImage.color = new Color(0, 0, 0, alpha);
+               yield return null;
+           }
+       }
     }
 
     public void GlassDisappearAndShowMap()
