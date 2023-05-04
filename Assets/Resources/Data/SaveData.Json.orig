@@ -1,0 +1,15 @@
+{
+  "playerInformationList": [
+{
+  "name": "sds",
+  "score": 13
+},
+{
+  "name": "kkk",
+  "score": 18
+}
+  ]
+}
+=======
+{"playerInformationList":[{"name":"초급 컴퓨터","score":5},{"name":"중급 컴퓨터","score":10},{"name":"고급 컴퓨터","score":20},{"name":"알파고","score":500}]}
+>>>>>>> KysBranch
