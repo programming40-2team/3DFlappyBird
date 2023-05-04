@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -76,7 +74,7 @@ public class PlayerControl : MonoBehaviour
         isDead = true;
         playerRigid.velocity = Vector3.zero;
         //playerAudio.clip = deathClip;
-       // playerAudio.Play();
+        // playerAudio.Play();
         UIManager.instance.gameOver();
 
     }
