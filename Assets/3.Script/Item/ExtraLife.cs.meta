@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/3.Script/Item/ExtraLife.cs.meta
+guid: 4fc45ae051f02674aaa73d1b61e2eac9
+========
+guid: 7fa7816d902170a45b1d02c6f349ca8a
+>>>>>>>> KysBranch:Assets/3.Script/CameraMoving.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
