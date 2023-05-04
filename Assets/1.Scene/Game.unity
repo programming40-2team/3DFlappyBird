@@ -27136,7 +27136,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5880603683013532799}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: gameOver
+        m_MethodName: gameRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
