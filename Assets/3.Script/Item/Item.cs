@@ -13,6 +13,8 @@ public class Item : MonoBehaviour, IItem
     private float rotateSpeed = 1000;
 
     private Vector3 moveDirectionVector = Vector3.up;
+
+    private int itemScore = 10;
     private void OnEnable()
     {
         StartCoroutine(MoveItem_co());
@@ -34,6 +36,7 @@ public class Item : MonoBehaviour, IItem
     public virtual void GetItem(GameObject bird)
     {
         //// UI 매니저에서 점수 추가 
+        UIManager.instance.addScore(itemScore);
         Destroy(gameObject);
     }
 
