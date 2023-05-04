@@ -56,9 +56,6 @@ public class UIManager : MonoBehaviour
         gameResultUI.gameObject.SetActive(true);
 
         setRankingUi();
-
-
-
     }
 
     public void setRankingUi()

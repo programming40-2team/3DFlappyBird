@@ -44,7 +44,5 @@ public class OpenningAnimation : MonoBehaviour
                 yield return null;
             }
         }
-
-
     }
 }
