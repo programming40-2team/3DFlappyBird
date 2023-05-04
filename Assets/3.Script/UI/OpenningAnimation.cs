@@ -8,6 +8,10 @@ public class OpenningAnimation : MonoBehaviour
 
     [SerializeField]
     private GameObject titleBroken;
+
+    [SerializeField]
+    private GameObject ShowMap;
+
     private void Start()
     {
         titleBroken.gameObject.SetActive(false);
@@ -16,15 +20,15 @@ public class OpenningAnimation : MonoBehaviour
     public void breakGlass()
     {
         titleBroken.SetActive(true);
-        StartCoroutine(nameof(fadeEffect), titleBroken.transform.parent);
+        StartCoroutine(nameof(fadeEffect));
 
     }
 
-    private IEnumerator fadeEffect(GameObject go)
+    private IEnumerator fadeEffect()
     {
         float fadeSpeed = 0.5f;
 
-        Image fadeImage = go.GetComponent<Image>();
+        Image fadeImage = titleBroken.transform.parent.GetComponent<Image>();
         float alpha = fadeImage.color.a;
         if (alpha == 1)
         {
@@ -45,4 +49,11 @@ public class OpenningAnimation : MonoBehaviour
             }
         }
     }
+
+    public void GlassDisappearAndShowMap()
+    {
+        titleBroken.gameObject.SetActive(false);
+
+    }
+
 }

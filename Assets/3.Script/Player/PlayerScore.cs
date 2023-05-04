@@ -5,13 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    private int playerScore;
-
-    [SerializeField] private Text ScoreText;
-
-    void Awake()
+    private void Start()
     {
-        playerScore = 0;
+        UIManager.instance.addScore(0);
     }
 
 
@@ -19,7 +15,7 @@ public class PlayerScore : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Score"))
         {
-            playerScore++;
+            UIManager.instance.addScore(1);
         }
     }
 }

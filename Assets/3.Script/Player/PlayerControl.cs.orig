@@ -75,10 +75,14 @@ public class PlayerControl : MonoBehaviour
     {
         isDead = true;
         playerRigid.velocity = Vector3.zero;
+<<<<<<< HEAD
+        playerAudio.clip = deathClip;
+        playerAudio.Play();
+=======
         //playerAudio.clip = deathClip;
        // playerAudio.Play();
         UIManager.instance.gameOver();
 
-
+>>>>>>> KysBranch
     }
 }
