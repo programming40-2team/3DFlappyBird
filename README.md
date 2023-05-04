@@ -1,5 +1,7 @@
 # 3DFlappyBird
 
+json파일 충돌 때문에 커밋하기 전에 초기화 버튼 눌러주세요
+
 설정
 
 Edit - Project Settings - Editor - Force Text
