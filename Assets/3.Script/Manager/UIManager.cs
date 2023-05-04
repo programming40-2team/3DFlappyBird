@@ -1,6 +1,9 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class UIManager : MonoBehaviour
 {
     #region 싱글톤
@@ -20,14 +23,13 @@ public class UIManager : MonoBehaviour
     #endregion
     //점수 점수를 획득할 경우 addScore 메서드를 호출 시 자동 갱신 
     private int playerScore = 0;
-
     //점수 추가하는 클래스 점수를 추가하면 자동으로 UI 갱신
     public void addScore(int score)
     {
         playerScore += score;
         update_Score_Text(playerScore);
     }
-
+    //라이프를 추가하는 함수 자동으로 UI 갱신
 
     [SerializeField]
     private TextMeshProUGUI Score_Text;
@@ -38,6 +40,49 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject Ranking;
 
+    [SerializeField]
+    private Image[] images;
+
+
+
+
+    public void isPlayerLifeIncrease(bool isAdd)
+    {
+        int currentLife = 0;
+        foreach(Image image in images)
+        {
+           if(image.enabled.Equals(true))
+            {
+                currentLife++;
+            }
+        }
+        if (currentLife.Equals(0)) return;
+
+        if (isAdd)
+        {
+            if (currentLife.Equals(3)) return;
+            for(int i=0;i< images.Length; i++)
+            {
+                if (images[i].enabled.Equals(false))
+                {
+                    StartCoroutine(nameof(fadeEffect), images[i]);
+                    break;
+                }
+            }
+            
+        }
+        else
+        {
+            for (int i = images.Length-1; i >=0; i--)
+            {
+                if (images[i].enabled.Equals(true))
+                {
+                    StartCoroutine(nameof(fadeEffect), images[i]);
+                    break;
+                }
+            }
+        }
+    }
 
 
     //ScoreText를 갱신하는 함수 -> 점수를 더해질 경우 자동갱신
@@ -163,4 +208,57 @@ public class UIManager : MonoBehaviour
 
     }
 
+
+    private IEnumerator fadeEffect(Image image)
+    {
+        float fadeSpeed = 0.5f;
+        float alpha = Mathf.Round(image.color.a);
+        if (alpha == 1)
+        {
+            //페이드 아웃? 점점 희려지는 기능
+            while (alpha > 0)
+            {
+                alpha -= Time.deltaTime * fadeSpeed;
+                Color Acolor = image.color;
+                Acolor.a = alpha;
+                image.color = Acolor;
+                //꺼질 때 자연스럽게 꺼지게 하기 위해서 0.2 정도 남으면 바로 끄고 생성
+                if (alpha < 0.2f)
+                {
+                    image.enabled = false;
+                    image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
+                    alpha = 0;
+                    image.color = Acolor;
+                }
+                yield return null;
+            }
+           
+        }
+        else
+        {
+            //페이드 인 점점 밝아지는 기능
+            image.enabled = true;
+            while (alpha < 1)
+            {
+                alpha += Time.deltaTime * fadeSpeed;
+                Color Bcolor = image.color;
+                Bcolor.a = alpha;
+                image.color = Bcolor;
+
+                //켜질 떄 자연스럽게 켜지게 하기 위해서
+                if (alpha > 0.3f)
+                {
+                    image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
+
+                }
+
+                yield return null;
+            }
+   
+           
+
+        }
+   
+
+    }
 }

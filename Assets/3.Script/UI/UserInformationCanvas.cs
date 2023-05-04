@@ -30,6 +30,7 @@ public class UserInformationCanvas : MonoBehaviour
         //첫 시작 시 인풋 필드가 나와 있는 것을 방지하기 위해 비활성화
         userInformationInput.SetActive(false);
         warningText.gameObject.SetActive(false);
+        //GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
     }
 
     public void ShowInputUserInfomationActive()

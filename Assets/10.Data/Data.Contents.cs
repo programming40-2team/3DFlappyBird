@@ -23,6 +23,10 @@ namespace Data
             Dictionary<string, PlayerData> dict = new Dictionary<string, PlayerData>();
             foreach (PlayerData data in playerInformationList)
             {
+                if (dict.ContainsKey(data.name))
+                {
+                    continue;
+                }
                 dict.Add(data.name, data);
             }
 
