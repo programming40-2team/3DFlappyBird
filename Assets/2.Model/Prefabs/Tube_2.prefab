@@ -347,4 +347,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -1}
-  moveSpeed: 2
+  moveSpeed: 8

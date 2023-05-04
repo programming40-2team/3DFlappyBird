@@ -77,6 +77,5 @@ public class PlayerControl : MonoBehaviour
         playerRigid.velocity = Vector3.zero;
         playerAudio.clip = deathClip;
         playerAudio.Play();
-
     }
 }

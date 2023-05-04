@@ -4168,7 +4168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -2}
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &4527246640389169315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4728,7 +4728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb5f989ff917214fbf8c2d429159905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 4
+  spawnTime: 2
 --- !u!1 &5233079204889046129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4945,7 +4945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -2}
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &5233079205066634851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19794,7 +19794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -2}
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!4 &5233079205525592970
 Transform:
   m_ObjectHideFlags: 0
@@ -19830,7 +19830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -2}
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &5233079205525592973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25688,7 +25688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -2}
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &5233079206311758607
 MonoBehaviour:
   m_ObjectHideFlags: 0
