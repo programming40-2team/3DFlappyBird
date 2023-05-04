@@ -1,7 +1,9 @@
+
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UserInformationCanvas : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class UserInformationCanvas : MonoBehaviour
     private int initScore = 0;
     [SerializeField]
     private TextMeshProUGUI warningText;
+    [Header("게임 특수 효과 애니메이션 이벤트를 위한 것!")]
+    [SerializeField]
+    private GameObject titleBroken;
 
     private void Start()
     {
@@ -52,6 +57,7 @@ public class UserInformationCanvas : MonoBehaviour
         //PlayerData 의 새로운 객체 nowPlayer를 만든 후, 저장합니다.
         if (DataManager.Instance.playerScoreDataDict.ContainsKey(playerInputField.text) || playerInputField.text == string.Empty)
         {
+            //이미 존재하는 아이디 혹은 공백을 입력할 경우 경고 메세지를 띄우는 Courtine을 실행합니다.
             StartCoroutine(nameof(warningtext_co));
         }
         else
@@ -64,11 +70,45 @@ public class UserInformationCanvas : MonoBehaviour
 
     }
 
-    IEnumerator warningtext_co()
+    private IEnumerator warningtext_co()
     {
         warningText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
         warningText.gameObject.SetActive(false);
+
+    }
+    public void breakGlass()
+    {
+        titleBroken.SetActive(true);
+        StartCoroutine(nameof(fadeEffect), titleBroken.transform.parent);
+
+    }
+
+    private IEnumerator fadeEffect(GameObject go)
+    {
+        float fadeSpeed = 0.5f;
+     
+        Image fadeImage = go.GetComponent<Image>();
+        float alpha = fadeImage.color.a;
+        if (alpha == 1)
+        {
+            while (alpha > 0)
+            {
+                alpha -= Time.deltaTime * fadeSpeed;
+                fadeImage.color = new Color(0, 0, 0, alpha);
+                yield return null;
+            }
+        }
+        else
+        {
+            while (alpha < 1)
+            {
+                alpha += Time.deltaTime * fadeSpeed;
+                fadeImage.color = new Color(0, 0, 0, alpha);
+                yield return null;
+            }
+        }
+   
 
     }
 
