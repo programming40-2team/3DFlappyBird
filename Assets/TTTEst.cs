@@ -18,6 +18,8 @@ public class TTTEst : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("ÀÌ·¸¤¡¤Ä");
+        Debug.Log("good");
     }
+
 }
