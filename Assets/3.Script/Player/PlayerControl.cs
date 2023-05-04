@@ -75,8 +75,9 @@ public class PlayerControl : MonoBehaviour
     {
         isDead = true;
         playerRigid.velocity = Vector3.zero;
-        playerAudio.clip = deathClip;
-        playerAudio.Play();
+        //playerAudio.clip = deathClip;
+       // playerAudio.Play();
+        UIManager.instance.gameOver();
 
     }
 }
