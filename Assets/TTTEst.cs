@@ -6,7 +6,6 @@ public class TTTEst : MonoBehaviour
 {
     // Start is called before the first frame update
     int c = 1;
-    int c2 = 1;
     void Start()
     {
         c = 2;
@@ -19,7 +18,6 @@ public class TTTEst : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("ÀÌ·¸¤¡¤Ä");
         Debug.Log("good");
     }
 
