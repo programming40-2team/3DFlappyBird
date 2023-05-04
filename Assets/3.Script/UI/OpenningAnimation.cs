@@ -21,7 +21,7 @@ public class OpenningAnimation : MonoBehaviour
     {
         titleBroken.SetActive(true);
         StartCoroutine(nameof(fadeEffect));
-
+      
     }
 
     private IEnumerator fadeEffect()
@@ -55,6 +55,7 @@ public class OpenningAnimation : MonoBehaviour
     public void GlassDisappearAndShowMap()
     {
         titleBroken.gameObject.SetActive(false);
+        ShowMap.gameObject.SetActive(true);
 
     }
 

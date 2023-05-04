@@ -152,8 +152,8 @@ public class UIManager : MonoBehaviour
     //그래야 랭킹에 반영될 수 있습니다. 아직 연동 X 
     public void gameRestart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Intro");
-
     }
     enum RankUI
     {
