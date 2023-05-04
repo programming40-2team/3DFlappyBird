@@ -6,6 +6,7 @@ public class TTTEst : MonoBehaviour
 {
     // Start is called before the first frame update
     int c = 1;
+    int c2 = 1;
     void Start()
     {
         c = 2;
