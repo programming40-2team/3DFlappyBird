@@ -24,9 +24,6 @@ public class UserInformationCanvas : MonoBehaviour
     private int initScore = 0;
     [SerializeField]
     private TextMeshProUGUI warningText;
-    [Header("게임 특수 효과 애니메이션 이벤트를 위한 것!")]
-    [SerializeField]
-    private GameObject titleBroken;
 
     private void Start()
     {
@@ -77,39 +74,6 @@ public class UserInformationCanvas : MonoBehaviour
         warningText.gameObject.SetActive(false);
 
     }
-    public void breakGlass()
-    {
-        titleBroken.SetActive(true);
-        StartCoroutine(nameof(fadeEffect), titleBroken.transform.parent);
-
-    }
-
-    private IEnumerator fadeEffect(GameObject go)
-    {
-        float fadeSpeed = 0.5f;
-     
-        Image fadeImage = go.GetComponent<Image>();
-        float alpha = fadeImage.color.a;
-        if (alpha == 1)
-        {
-            while (alpha > 0)
-            {
-                alpha -= Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, alpha);
-                yield return null;
-            }
-        }
-        else
-        {
-            while (alpha < 1)
-            {
-                alpha += Time.deltaTime * fadeSpeed;
-                fadeImage.color = new Color(0, 0, 0, alpha);
-                yield return null;
-            }
-        }
-   
-
-    }
+  
 
 }
