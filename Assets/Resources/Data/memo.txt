@@ -1,0 +1,10 @@
+{
+  "playerInformationList": [
+    {
+      "name": "Dummy",
+      "score": -999
+
+    }
+
+  ]
+}

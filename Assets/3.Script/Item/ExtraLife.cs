@@ -6,6 +6,7 @@ public class ExtraLife : Item
 {
     public override void GetItem(GameObject bird)
     {
+        bird.GetComponent<PlayerControl>().deathCount++;
         base.GetItem(bird);
     }
 }

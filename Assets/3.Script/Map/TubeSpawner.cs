@@ -16,7 +16,7 @@ public class TubeSpawner : MonoBehaviour
 
     private void SetRandomPosition()
     {
-        randomNum = Random.Range(9f, 23f);
+        randomNum = Random.Range(9f, 20f);
     }
 
     private IEnumerator SpawnTube_co()
