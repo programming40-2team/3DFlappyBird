@@ -24,10 +24,11 @@ public class TubeSpawner : MonoBehaviour
         while (true)
         {
             SetRandomPosition();
-            GameObject obj = objectPool.GetObject();
-            obj.transform.position = new Vector3(transform.position.x, randomNum, transform.position.z);
+            //GameObject obj = objectPool.GetObject();
+            //obj.transform.position = new Vector3(transform.position.x, randomNum, transform.position.z);
+
+            objectPool.GetObject().transform.position = new Vector3(transform.position.x, randomNum, transform.position.z);
             yield return wfs;
         }
-
     }
 }
