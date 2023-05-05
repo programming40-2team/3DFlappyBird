@@ -235,26 +235,18 @@ public class UIManager : MonoBehaviour
 
         }
         else
-        {
-            //페이드 인 점점 밝아지는 기능
+        { 
+            //페이드 인 점점 밝아지는 기능 이었던것  --코루틴 중첩으로 인해 
+            // 페이드 효과 획득할 떄는 제거 -Queue로 관리하려 하였으나 부자연스럽
             image.enabled = true;
-            while (alpha < 1)
-            {
-                alpha += Time.deltaTime * fadeSpeed;
-                Color Bcolor = image.color;
-                Bcolor.a = alpha;
-                image.color = Bcolor;
 
-                //켜질 떄 자연스럽게 켜지게 하기 위해서
-                if (alpha > 0.3f)
-                {
-                    image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
+            alpha = 1;
+            Color Bcolor = image.color;
+            Bcolor.a = alpha;
+            image.color = Bcolor;
+            image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
 
-                }
-
-                yield return null;
-            }
-
+            yield  break;
 
 
         }
