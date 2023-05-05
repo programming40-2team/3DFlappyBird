@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 return null;
             }
@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -65,10 +65,7 @@ public class SoundManager : MonoBehaviour
     public void PlaySuperStar()
     {
         mAudioSource.clip = superStar;
-        if (!mAudioSource.isPlaying)
-        {
-            mAudioSource.Play();
-        }
+        mAudioSource.Play();
     }
 
     public void StopSuperStar()
