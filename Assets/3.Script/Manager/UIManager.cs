@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     //점수 추가하는 클래스 점수를 추가하면 자동으로 UI 갱신
     public void addScore(int score)
     {
+        Debug.Log("실행2");
         playerScore += score;
         update_Score_Text(playerScore);
     }
@@ -88,6 +89,7 @@ public class UIManager : MonoBehaviour
     //ScoreText를 갱신하는 함수 -> 점수를 더해질 경우 자동갱신
     private void update_Score_Text(int newScore)
     {
+        Debug.Log("실행3");
         Score_Text.text = $"Score : {newScore}";
     }
 

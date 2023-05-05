@@ -18,6 +18,14 @@ public class ObjectPool : MonoBehaviour
             poolingQueue.Enqueue(obj);
             obj.SetActive(false);
         }
+        foreach(Transform child in transform)
+        {
+            foreach(Transform child_ in child)
+            {
+                child_.tag = "Score";
+            }
+        }
+
     }
     public GameObject GetObject()
     {
