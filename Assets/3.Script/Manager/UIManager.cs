@@ -44,8 +44,6 @@ public class UIManager : MonoBehaviour
     private Image[] images;
 
 
-
-
     public void isPlayerLifeIncrease(bool isAdd)
     {
         int currentLife = 0;
@@ -60,6 +58,7 @@ public class UIManager : MonoBehaviour
 
         if (isAdd)
         {
+            SoundManager.Instance.PlayGetHeart();
             if (currentLife.Equals(3)) return;
             for(int i=0;i< images.Length; i++)
             {
@@ -73,6 +72,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.PlayLostHeart();
             for (int i = images.Length-1; i >=0; i--)
             {
                 if (images[i].enabled.Equals(true))

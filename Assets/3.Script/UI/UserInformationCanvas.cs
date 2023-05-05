@@ -45,6 +45,7 @@ public class UserInformationCanvas : MonoBehaviour
     {
         //유저가 입력을 포기하면, 인풋 필드가 사라지고,
         //다시 게임 시작 버튼이 나타납니다.
+        SoundManager.Instance.PlayClick();
         userInformationInput.SetActive(false);
         gameStartButton.SetActive(true);
 

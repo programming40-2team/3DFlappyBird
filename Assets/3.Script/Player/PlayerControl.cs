@@ -10,15 +10,32 @@ public class PlayerControl : MonoBehaviour
     public AudioClip jumpClip;
 
     private bool isDead;
-    public int deathCount = 1;
+    private readonly int maxDeathCount = 3;
+    private int deathCount = 1;
+    public int DeathCount
+    {
+        get { return deathCount; }
+        set
+        {
+            if(value >= maxDeathCount)
+            {
+                deathCount = maxDeathCount;
+            }
+            else
+            {
+                deathCount = value;
+            }
+        }
+    }
 
     private Rigidbody playerRigid;
-    public Animator animator;
+    private Animator animator;
     private AudioSource playerAudio;
     private SphereCollider birdCollider;
     private List<Transform> birdRenderer;
 
     [SerializeField] private float invincibleTime;
+    public bool isInvincible { get; private set; } = false;
 
     [Header("점프력 조절")]
     [SerializeField][Range(10f, 50f)] private float jumpForce = 10f;
@@ -51,6 +68,7 @@ public class PlayerControl : MonoBehaviour
             //마우스를 클릭할때마다 y축으로 AddForce 적용되어 점프
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                SoundManager.Instance.PlayJump();
                 playerRigid.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
                 transform.Rotate(new Vector3(10, 0, 0));    //캐릭터의 몸통이 위를 향하는 각도 변화
                 jumpCount++;
@@ -66,43 +84,48 @@ public class PlayerControl : MonoBehaviour
                 //마우스를 떼는 순간 속도의 y값이 양수라면 속도가 절반으로 => 적용해보니 너무 게임이 쉬워지는듯한 단점
                 if (Input.GetKeyUp(KeyCode.Mouse0) && playerRigid.velocity.y > 0)
                 {
-                    playerRigid.velocity = playerRigid.velocity * 0.5f;
+                    playerRigid.velocity *= 0.5f;
                 }
             }
         }
+    }
 
+    private void LateUpdate()
+    {
+        if (transform.position.y >= 26)
+        {
+            transform.position = new Vector3(transform.position.x, 26, transform.position.z);
+        }
+        else if (transform.position.y <= 1)
+        {
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
     }
 
     private void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.CompareTag("Tube"))
+        if (coll.gameObject.CompareTag("Tube") || coll.gameObject.CompareTag("Ground"))
         {
             if (!isDead && deathCount > 0)
             {
-                deathCount--;
-                if (deathCount <= 0)
-                {
-                    Die();
-                }
-                else
-                {
-                    StartCoroutine(InvincibleBird_co());
-                }
+                TakeDamage();
             }
         }
-        if (coll.gameObject.CompareTag("Ground"))
+    }
+
+    private void TakeDamage()
+    {
+        if (!isDead && DeathCount > 0)
         {
-            if (!isDead && deathCount > 0)
+            DeathCount--;
+            UIManager.instance.isPlayerLifeIncrease(false);
+            if (DeathCount <= 0)
             {
-                deathCount--;
-                if (deathCount <= 0)
-                {
-                    Die();
-                }
-                else
-                {
-                    StartCoroutine(InvincibleBird_co());
-                }
+                Die();
+            }
+            else
+            {
+                StartCoroutine(InvincibleBird_co());
             }
         }
     }
@@ -110,35 +133,40 @@ public class PlayerControl : MonoBehaviour
     private void Die()
     {
         isDead = true;
+        SoundManager.Instance.PlayDeath();
         playerRigid.velocity = Vector3.zero;
-        //playerAudio.clip = deathClip;
-        // playerAudio.Play();
+    
         UIManager.instance.gameOver();
     }
 
     private IEnumerator InvincibleBird_co()
     {
+        isInvincible = true;
         birdCollider.isTrigger = true;
         Coroutine runningCoroutine = StartCoroutine(BlinkBird_co());
         yield return new WaitForSeconds(invincibleTime);
         StopCoroutine(runningCoroutine);
+        BlickBird(true);
         birdCollider.isTrigger = false;
+        isInvincible = false;
     }
 
     private IEnumerator BlinkBird_co()
     {
         while (true)
         {
-            for (int i = 0; i < birdRenderer.Count; i++)
-            {
-                birdRenderer[i].gameObject.SetActive(false);
-            }
+            BlickBird(false);
             yield return new WaitForSeconds(0.2f);
-            for (int i = 0; i < birdRenderer.Count; i++)
-            {
-                birdRenderer[i].gameObject.SetActive(true);
-            }
+            BlickBird(true);
             yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    private void BlickBird(bool isActive)
+    {
+        for (int i = 0; i < birdRenderer.Count; i++)
+        {
+            birdRenderer[i].gameObject.SetActive(isActive);
         }
     }
 }

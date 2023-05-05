@@ -10,7 +10,6 @@ public class PlayerScore : MonoBehaviour
         UIManager.instance.addScore(0);
     }
 
-
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Score"))
