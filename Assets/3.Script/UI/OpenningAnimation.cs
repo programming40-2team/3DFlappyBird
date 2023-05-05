@@ -47,8 +47,6 @@ public class OpenningAnimation : MonoBehaviour
                 yield return null;
             }
         }
-
-
     }
 
     public void GlassDisappearAndShowMap()

@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Sky
+  - TubePool
+  - Tube
+  - Score
+  - ItemPool
   layers:
   - Default
   - TransparentFX
