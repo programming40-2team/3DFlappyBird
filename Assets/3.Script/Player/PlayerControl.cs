@@ -111,6 +111,11 @@ public class PlayerControl : MonoBehaviour
                 TakeDamage();
             }
         }
+        //태그 변하는 버그 임시조치
+        //if (!isDead && deathCount > 0)
+        //{
+        //    TakeDamage();
+        //}
     }
 
     private void TakeDamage()

@@ -18,9 +18,10 @@ public class ObjectPool : MonoBehaviour
             poolingQueue.Enqueue(obj);
             obj.SetActive(false);
         }
-        //foreach(Transform child in transform)
+        //스코어 콜라이더 태그가 TubePool로 변하는 버그 있음 임시 조치
+        //foreach (Transform child in transform)
         //{
-        //    foreach(Transform child_ in child)
+        //    foreach (Transform child_ in child)
         //    {
         //        child_.tag = "Score";
         //    }
