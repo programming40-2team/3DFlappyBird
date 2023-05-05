@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackGroundLoop : MonoBehaviour
 {
     private float width = 20f;
-    
+
     void Update()
     {
         if (transform.position.z <= -width)

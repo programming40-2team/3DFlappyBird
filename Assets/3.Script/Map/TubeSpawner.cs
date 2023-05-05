@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TubeSpawner : MonoBehaviour
@@ -22,7 +21,7 @@ public class TubeSpawner : MonoBehaviour
     private IEnumerator SpawnTube_co()
     {
         WaitForSeconds wfs = new WaitForSeconds(spawnTime);
-        while(true)
+        while (true)
         {
             SetRandomPosition();
             GameObject obj = objectPool.GetObject();

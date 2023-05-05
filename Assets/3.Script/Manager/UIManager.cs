@@ -49,9 +49,9 @@ public class UIManager : MonoBehaviour
     public void isPlayerLifeIncrease(bool isAdd)
     {
         int currentLife = 0;
-        foreach(Image image in images)
+        foreach (Image image in images)
         {
-           if(image.enabled.Equals(true))
+            if (image.enabled.Equals(true))
             {
                 currentLife++;
             }
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         if (isAdd)
         {
             if (currentLife.Equals(3)) return;
-            for(int i=0;i< images.Length; i++)
+            for (int i = 0; i < images.Length; i++)
             {
                 if (images[i].enabled.Equals(false))
                 {
@@ -69,11 +69,11 @@ public class UIManager : MonoBehaviour
                     break;
                 }
             }
-            
+
         }
         else
         {
-            for (int i = images.Length-1; i >=0; i--)
+            for (int i = images.Length - 1; i >= 0; i--)
             {
                 if (images[i].enabled.Equals(true))
                 {
@@ -229,7 +229,7 @@ public class UIManager : MonoBehaviour
                 }
                 yield return null;
             }
-           
+
         }
         else
         {
@@ -251,11 +251,11 @@ public class UIManager : MonoBehaviour
 
                 yield return null;
             }
-   
-           
+
+
 
         }
-   
+
 
     }
 }

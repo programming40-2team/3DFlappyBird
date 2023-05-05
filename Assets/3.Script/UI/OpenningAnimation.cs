@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +20,7 @@ public class OpenningAnimation : MonoBehaviour
     {
         titleBroken.SetActive(true);
         StartCoroutine(nameof(fadeEffect));
-      
+
     }
 
     private IEnumerator fadeEffect()

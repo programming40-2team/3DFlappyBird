@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UserInformationCanvas : MonoBehaviour
 {
@@ -75,6 +74,6 @@ public class UserInformationCanvas : MonoBehaviour
         warningText.gameObject.SetActive(false);
 
     }
-  
+
 
 }
