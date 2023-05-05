@@ -15,6 +15,7 @@ public class Invincible : Item
         {
             StartCoroutine(InvincibleItem_co(bird));
             UIManager.instance.addScore(2);
+            bird.GetComponent<Renderer>().enabled = false; 
         }
     }
 
@@ -30,6 +31,7 @@ public class Invincible : Item
         birdColl.isTrigger = false;
         Time.timeScale = 1f;
         SoundManager.Instance.StopSuperStar();
+        Destroy(gameObject);
     }
 
 
