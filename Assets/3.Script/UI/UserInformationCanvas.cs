@@ -60,7 +60,9 @@ public class UserInformationCanvas : MonoBehaviour
         }
         else
         {
-            DataManager.Instance.addData(playerInputField.text, initScore);
+
+            DataManager.Instance.nowPlayer.name = playerInputField.text;
+
 
             //TODO 게임씬 로딩 
             SceneManager.LoadScene("Game");

@@ -47,9 +47,9 @@ public class UIManager : MonoBehaviour
     public void isPlayerLifeIncrease(bool isAdd)
     {
         int currentLife = 0;
-        foreach(Image image in images)
+        foreach (Image image in images)
         {
-           if(image.enabled.Equals(true))
+            if (image.enabled.Equals(true))
             {
                 currentLife++;
             }
@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.Instance.PlayGetHeart();
             if (currentLife.Equals(3)) return;
-            for(int i=0;i< images.Length; i++)
+            for (int i = 0; i < images.Length; i++)
             {
                 if (images[i].enabled.Equals(false))
                 {
@@ -68,12 +68,12 @@ public class UIManager : MonoBehaviour
                     break;
                 }
             }
-            
+
         }
         else
         {
             SoundManager.Instance.PlayLostHeart();
-            for (int i = images.Length-1; i >=0; i--)
+            for (int i = images.Length - 1; i >= 0; i--)
             {
                 if (images[i].enabled.Equals(true))
                 {
@@ -96,10 +96,9 @@ public class UIManager : MonoBehaviour
     {
         //게임 종료 시 점수를 갱신하고, 게임 멈춤 및 스코어 창 비활성 + 게임 결과창 활성
         DataManager.Instance.afterGameOverRenewData(playerScore);
-        Time.timeScale = 0;
         Score_Text.gameObject.SetActive(false);
         gameResultUI.gameObject.SetActive(true);
-
+        GameObject.FindGameObjectWithTag("Player").gameObject.SetActive(false);
         setRankingUi();
     }
 
@@ -194,8 +193,12 @@ public class UIManager : MonoBehaviour
     //그래야 랭킹에 반영될 수 있습니다. 아직 연동 X 
     public void gameRestart()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Intro");
+    }
+    //게임 종료하는 함수
+    public void gameQuit()
+    {
+        Application.Quit();
     }
     enum RankUI
     {
@@ -229,7 +232,7 @@ public class UIManager : MonoBehaviour
                 }
                 yield return null;
             }
-           
+
         }
         else
         {
@@ -251,11 +254,11 @@ public class UIManager : MonoBehaviour
 
                 yield return null;
             }
-   
-           
+
+
 
         }
-   
+
 
     }
 }

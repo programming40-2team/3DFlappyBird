@@ -2641,11 +2641,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 872020637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa7816d902170a45b1d02c6f349ca8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e0153d556df75048875203f8b974c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreTube: []
-  cameraMovingTime: 4
+  cameraMovingTime: 6
 --- !u!135 &872020643
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4632,7 +4632,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459369905
 GameObject:
@@ -11546,7 +11546,7 @@ Transform:
   - {fileID: 3569065436055110089}
   - {fileID: 8946379747801698682}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &5271238048805965240
 CanvasRenderer:
@@ -12379,7 +12379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: -1}
-  moveSpeed: 4
+  moveSpeed: 8
 --- !u!33 &8557434790152510028
 MeshFilter:
   m_ObjectHideFlags: 0
