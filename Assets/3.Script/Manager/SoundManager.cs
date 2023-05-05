@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip superStar;
-
+    private AudioSource bgmPlayer;
 
     private void Awake()
     {
@@ -63,6 +63,8 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySuperStar()
     {
+        bgmPlayer = GameObject.FindGameObjectWithTag("BGMPlayer").GetComponent<AudioSource>();
+        bgmPlayer.Pause();
         mAudioSource.clip = superStar;
         mAudioSource.Play();
     }
@@ -70,6 +72,7 @@ public class SoundManager : MonoBehaviour
     public void StopSuperStar()
     {
         mAudioSource.Stop();
+        bgmPlayer.Play();
     }
 
 }

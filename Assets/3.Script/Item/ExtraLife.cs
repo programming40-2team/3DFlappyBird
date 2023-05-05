@@ -7,7 +7,7 @@ public class ExtraLife : Item
     public override void GetItem(GameObject bird)
     {
 
-        if (!bird.GetComponent<PlayerControl>().isInvincible)
+        if (!bird.GetComponent<PlayerControl>().isInvincible && !isInvincible)
         {
             bird.GetComponent<PlayerControl>().DeathCount++;
             UIManager.instance.isPlayerLifeIncrease(true);

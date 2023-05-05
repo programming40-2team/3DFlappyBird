@@ -1,24 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Collider))]
 public class Item : MonoBehaviour, IItem
 {
+    protected static bool isInvincible;
     private readonly float highPosition = 15f;
     private readonly float lowPosition = 5f;
-    private  float moveSpeed = 8;
+    private readonly float moveSpeed = 8;
     private readonly float rotateSpeed = 1000;
 
     private readonly int itemScore = 2;
 
     private Vector3 moveDirectionVector = new Vector3(0, 1, -1);
-
+    private ItemObjectPool itemObjectPool;
     private void OnEnable()
     {
-        moveSpeed = 8;
+        GameObject.FindGameObjectWithTag("ItemPool").TryGetComponent(out itemObjectPool);
         StartCoroutine(MoveItem_co());
     }
+    private void Update()
+    {
+        if (transform.position.y <= -20f)
+        {
+            itemObjectPool.ReturnObject(gameObject);
+        }
+    }
+
     /// <summary>
     /// 아이템이 맵과 같은 속도로 다가오면서 위 아래로 이동하는 코루틴
     /// </summary>
@@ -33,7 +43,7 @@ public class Item : MonoBehaviour, IItem
             }
             transform.position += moveSpeed * Time.deltaTime * moveDirectionVector;
             transform.rotation *= Quaternion.Euler(0, 0, rotateSpeed * Time.deltaTime);
-            
+
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -44,7 +54,7 @@ public class Item : MonoBehaviour, IItem
     public virtual void GetItem(GameObject bird)
     {
         UIManager.instance.addScore(itemScore);
-        Destroy(gameObject);
+        DestroyItem();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,5 +63,10 @@ public class Item : MonoBehaviour, IItem
         {
             GetItem(other.gameObject);
         }
+    }
+
+    protected void DestroyItem()
+    {
+        itemObjectPool.ReturnObject(gameObject);
     }
 }

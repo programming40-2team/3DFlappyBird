@@ -8,20 +8,22 @@ public class Invincible : Item
     [SerializeField] private Shader defaultShader;
 
     private readonly float invincibleTime = 20f;
-
+    private bool isInvincibleCoroutneRunning;
     public override void GetItem(GameObject bird)
     {
-        if(!bird.GetComponent<PlayerControl>().isInvincible)
+        if(!bird.GetComponent<PlayerControl>().isInvincible && !isInvincible)
         {
             StartCoroutine(InvincibleItem_co(bird));
             UIManager.instance.addScore(2);
-            bird.GetComponent<Renderer>().enabled = false; 
+            GetComponent<Renderer>().enabled = false;
         }
     }
 
     private IEnumerator InvincibleItem_co(GameObject bird)
     {
         Collider birdColl = bird.GetComponent<Collider>();
+        //isInvincibleCoroutneRunning = true;
+        isInvincible = true;
         ChangeShader(bird, shader);
         birdColl.isTrigger = true;
         Time.timeScale = 2f;
@@ -31,7 +33,9 @@ public class Invincible : Item
         birdColl.isTrigger = false;
         Time.timeScale = 1f;
         SoundManager.Instance.StopSuperStar();
-        Destroy(gameObject);
+        isInvincible = false;
+        //isInvincibleCoroutneRunning = false;
+        DestroyItem();
     }
 
 
@@ -39,10 +43,12 @@ public class Invincible : Item
     {
         foreach (Transform child in bird.transform)
         {
-            Renderer ren = child.GetComponent<Renderer>();
-            for (int i = 0; i < ren.materials.Length; i++)
+            if(child.TryGetComponent(out Renderer ren))
             {
-                ren.materials[i].shader = shader_;
+                for (int i = 0; i < ren.materials.Length; i++)
+                {
+                    ren.materials[i].shader = shader_;
+                }
             }
         }
     }
