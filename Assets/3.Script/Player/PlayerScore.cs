@@ -9,12 +9,8 @@ public class PlayerScore : MonoBehaviour
 
     private void OnTriggerExit(Collider coll)
     {
-        Debug.Log("실행0");
-        Debug.Log(coll.transform.tag);
         if (coll.CompareTag("Score"))
         {
-            
-            Debug.Log("실행1");
             UIManager.instance.addScore(1);
         }
     }

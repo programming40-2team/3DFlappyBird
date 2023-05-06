@@ -18,24 +18,6 @@ public class ObjectPool : MonoBehaviour
             poolingQueue.Enqueue(obj);
             obj.SetActive(false);
         }
-        //스코어 콜라이더 태그가 TubePool로 변하는 버그 있음 임시 조치
-        foreach (Transform child in transform)
-        {
-            for(int i = 0; i < child.childCount; i++)
-            {
-                string obTag;
-                if(i == 2)
-                {
-                    obTag = "Score";
-                }
-                else
-                {
-                    obTag = "Tube";
-                }
-                child.GetChild(i).tag = obTag;
-            }
-        }
-
     }
     public GameObject GetObject()
     {
