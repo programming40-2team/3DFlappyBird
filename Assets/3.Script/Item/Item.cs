@@ -7,10 +7,10 @@ using UnityEngine.Rendering;
 public class Item : MonoBehaviour, IItem
 {
     protected static bool isInvincible;
-    private readonly float highPosition = 15f;
+    private readonly float highPosition = 20f;
     private readonly float lowPosition = 5f;
     private readonly float moveSpeed = 8;
-    private readonly float rotateSpeed = 1000;
+    private readonly float rotateSpeed = 500;
 
     private readonly int itemScore = 2;
 

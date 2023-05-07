@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
     //게임 오버 시 나타나는 함수 게임 종료 시 '한번만' 호출!
     public void gameOver()
     {
+        SoundManager.Instance.StopSuperStar();
         //게임 종료 시 점수를 갱신하고, 게임 멈춤 및 스코어 창 비활성 + 게임 결과창 활성
         DataManager.Instance.afterGameOverRenewData(playerScore);
         Score_Text.gameObject.SetActive(false);
