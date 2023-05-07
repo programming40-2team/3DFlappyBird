@@ -41,7 +41,7 @@ public class ObjectSpawner : MonoBehaviour
     private bool IsSuccessSummonItem()
     {
         int RandNumber = Random.Range(0, 100);
-        if (RandNumber >= 30)
+        if (RandNumber >= 85)
         {
             return true;
         }
