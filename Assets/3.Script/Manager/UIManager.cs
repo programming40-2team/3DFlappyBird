@@ -235,7 +235,7 @@ public class UIManager : MonoBehaviour
 
         }
         else
-        { 
+        {
             //페이드 인 점점 밝아지는 기능 이었던것  --코루틴 중첩으로 인해 
             // 페이드 효과 획득할 떄는 제거 -Queue로 관리하려 하였으나 부자연스럽
             image.enabled = true;
@@ -246,7 +246,7 @@ public class UIManager : MonoBehaviour
             image.color = Bcolor;
             image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
 
-            yield  break;
+            yield break;
 
 
         }

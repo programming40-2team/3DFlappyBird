@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Invincible : Item
@@ -8,10 +7,9 @@ public class Invincible : Item
     [SerializeField] private Shader defaultShader;
 
     private readonly float invincibleTime = 20f;
-    private bool isInvincibleCoroutneRunning;
     public override void GetItem(GameObject bird)
     {
-        if(!bird.GetComponent<PlayerControl>().isInvincible && !isInvincible)
+        if (!bird.GetComponent<PlayerControl>().isInvincible && !isInvincible)
         {
             StartCoroutine(InvincibleItem_co(bird));
             UIManager.instance.addScore(2);
@@ -22,7 +20,6 @@ public class Invincible : Item
     private IEnumerator InvincibleItem_co(GameObject bird)
     {
         Collider birdColl = bird.GetComponent<Collider>();
-        //isInvincibleCoroutneRunning = true;
         isInvincible = true;
         ChangeShader(bird, shader);
         birdColl.isTrigger = true;
@@ -34,16 +31,13 @@ public class Invincible : Item
         Time.timeScale = 1f;
         SoundManager.Instance.StopSuperStar();
         isInvincible = false;
-        //isInvincibleCoroutneRunning = false;
         DestroyItem();
     }
-
-
     private void ChangeShader(GameObject bird, Shader shader_)
     {
         foreach (Transform child in bird.transform)
         {
-            if(child.TryGetComponent(out Renderer ren))
+            if (child.TryGetComponent(out Renderer ren))
             {
                 for (int i = 0; i < ren.materials.Length; i++)
                 {

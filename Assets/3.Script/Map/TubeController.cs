@@ -3,7 +3,7 @@ using UnityEngine;
 public class TubeController : MonoBehaviour
 {
     private ObjectPool objectPool;
-    private float width = 20f;
+    private readonly float width = 20f;
 
     private void Start()
     {

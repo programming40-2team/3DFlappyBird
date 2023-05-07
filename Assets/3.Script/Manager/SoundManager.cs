@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -36,8 +35,18 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         TryGetComponent(out mAudioSource);
+        bgmPlayer = GameObject.FindGameObjectWithTag("BGMPlayer").GetComponent<AudioSource>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        bgmPlayer = GameObject.FindGameObjectWithTag("BGMPlayer").GetComponent<AudioSource>();
+    }
+    
+    public void UpdateBgmPlayer()
+    {
+        bgmPlayer = GameObject.FindGameObjectWithTag("BGMPlayer").GetComponent<AudioSource>();
     }
 
     public void PlayClick()
@@ -63,7 +72,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySuperStar()
     {
-        bgmPlayer = GameObject.FindGameObjectWithTag("BGMPlayer").GetComponent<AudioSource>();
         bgmPlayer.Pause();
         mAudioSource.clip = superStar;
         mAudioSource.Play();
@@ -74,5 +82,4 @@ public class SoundManager : MonoBehaviour
         mAudioSource.Stop();
         bgmPlayer.Play();
     }
-
 }

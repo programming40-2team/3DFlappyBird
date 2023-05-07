@@ -33,13 +33,10 @@ public class DataManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
-
-
     }
 
     //전처리기 입니다. 유니티 에디터 혹은 스탠드 얼론 
-    //일 떄 쓰는 파일 경로와 모바일 환경에서 사용하는 경로를 분리했습니다./
+    //일 때 쓰는 파일 경로와 모바일 환경에서 사용하는 경로를 분리했습니다./
     private void Start()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE

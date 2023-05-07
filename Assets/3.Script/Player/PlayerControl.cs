@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
         get { return deathCount; }
         set
         {
-            if(value >= maxDeathCount)
+            if (value >= maxDeathCount)
             {
                 deathCount = maxDeathCount;
             }
@@ -30,7 +30,6 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody playerRigid;
     private Animator animator;
-    private AudioSource playerAudio;
     private SphereCollider birdCollider;
     private List<Transform> birdRenderer;
 
@@ -41,15 +40,14 @@ public class PlayerControl : MonoBehaviour
     [SerializeField][Range(10f, 50f)] private float jumpForce = 10f;
     private int jumpCount = 0;
 
-
     void Start()
     {
         birdRenderer = new List<Transform>();
         isDead = false;
-        playerRigid = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        playerAudio = GetComponent<AudioSource>();
-        birdCollider = GetComponent<SphereCollider>();
+        TryGetComponent(out playerRigid);
+        TryGetComponent(out animator);
+        TryGetComponent(out birdCollider);
+
         foreach (Transform birdBody in transform)
         {
             if (birdBody.TryGetComponent(out Transform birdBodyGameobj))
@@ -135,7 +133,7 @@ public class PlayerControl : MonoBehaviour
         isDead = true;
         SoundManager.Instance.PlayDeath();
         playerRigid.velocity = Vector3.zero;
-    
+
         UIManager.instance.gameOver();
     }
 
@@ -153,12 +151,13 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator BlinkBird_co()
     {
+        WaitForSeconds wfs = new WaitForSeconds(0.2f);
         while (true)
         {
             BlickBird(false);
-            yield return new WaitForSeconds(0.2f);
+            yield return wfs;
             BlickBird(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return wfs;
         }
     }
 

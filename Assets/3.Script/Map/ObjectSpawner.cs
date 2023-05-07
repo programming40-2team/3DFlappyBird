@@ -24,12 +24,10 @@ public class ObjectSpawner : MonoBehaviour
     private IEnumerator SpawnTube_co()
     {
         WaitForSeconds wfs = new WaitForSeconds(spawnTime / 2);
-        
+
         while (true)
         {
             SetRandomPosition();
-            //GameObject obj = tubeObjectPool.GetObject();
-            //obj.transform.position = new Vector3(transform.position.x, randomNum, transform.position.z);
             tubeObjectPool.GetObject().transform.position = new Vector3(transform.position.x, randomNum, transform.position.z);
             yield return wfs;
             if (IsSuccessSummonItem())
@@ -43,7 +41,7 @@ public class ObjectSpawner : MonoBehaviour
     private bool IsSuccessSummonItem()
     {
         int RandNumber = Random.Range(0, 100);
-        if(RandNumber >= 85)
+        if (RandNumber >= 30)
         {
             return true;
         }
