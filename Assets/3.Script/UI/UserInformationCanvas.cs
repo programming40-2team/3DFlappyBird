@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UserInformationCanvas : MonoBehaviour
 {
@@ -45,6 +44,7 @@ public class UserInformationCanvas : MonoBehaviour
     {
         //유저가 입력을 포기하면, 인풋 필드가 사라지고,
         //다시 게임 시작 버튼이 나타납니다.
+        SoundManager.Instance.PlayClick();
         userInformationInput.SetActive(false);
         gameStartButton.SetActive(true);
 
@@ -60,7 +60,9 @@ public class UserInformationCanvas : MonoBehaviour
         }
         else
         {
-            DataManager.Instance.addData(playerInputField.text, initScore);
+
+            DataManager.Instance.nowPlayer.name = playerInputField.text;
+
 
             //TODO 게임씬 로딩 
             SceneManager.LoadScene("Game");
@@ -75,6 +77,6 @@ public class UserInformationCanvas : MonoBehaviour
         warningText.gameObject.SetActive(false);
 
     }
-  
+
 
 }

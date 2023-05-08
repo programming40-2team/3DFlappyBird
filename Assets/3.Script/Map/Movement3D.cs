@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement3D : MonoBehaviour
@@ -9,6 +7,6 @@ public class Movement3D : MonoBehaviour
 
     private void Update()
     {
-        gameObject.transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        gameObject.transform.position += moveSpeed * Time.deltaTime * moveDirection;
     }
 }

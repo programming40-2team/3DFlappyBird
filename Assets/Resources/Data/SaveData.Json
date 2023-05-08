@@ -1,1 +1,72 @@
-{"playerInformationList":[{"name":"초급 컴퓨터","score":5},{"name":"중급 컴퓨터","score":10},{"name":"고급 컴퓨터","score":20},{"name":"알파고","score":500}]}
+{
+  "playerInformationList": [
+{
+  "name": "초급 컴퓨터",
+  "score": 5
+},
+{
+  "name": "중급 컴퓨터",
+  "score": 10
+},
+{
+  "name": "고급 컴퓨터",
+  "score": 20
+},
+{
+  "name": "알파고",
+  "score": 500
+},
+{
+  "name": "ttest",
+  "score": 51
+},
+{
+  "name": "qqqq",
+  "score": 61
+},
+{
+  "name": "ddd",
+  "score": 0
+},
+{
+  "name": "ggg",
+  "score": 11
+},
+{
+  "name": "qqq",
+  "score": 33
+},
+{
+  "name": "f",
+  "score": 53
+},
+{
+  "name": "www",
+  "score": 22
+},
+{
+  "name": "완성이야",
+  "score": 33
+},
+{
+  "name": "ㅂㅂㅂㅂ",
+  "score": 12
+},
+{
+  "name": "ㄺㄹ",
+  "score": 12
+},
+{
+  "name": "ㄳ",
+  "score": 70
+},
+{
+  "name": "ㅗㅗ",
+  "score": 0
+},
+{
+  "name": "aaa",
+  "score": 73
+}
+  ]
+}

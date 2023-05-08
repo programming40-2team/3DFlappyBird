@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackGroundLoop : MonoBehaviour
 {
     private float width = 20f;
-    
+    private Vector3 offset;
+
+    private void Awake()
+    {
+        offset = new Vector3(0, 0, width * 5);
+    }
     void Update()
     {
         if (transform.position.z <= -width)
@@ -15,8 +18,7 @@ public class BackGroundLoop : MonoBehaviour
     }
     public void Reposition()
     {
-        Vector3 offset = new Vector3(0, 0, width * 5);
-        transform.position = (Vector3)transform.position + offset;
+        transform.position = transform.position + offset;
     }
 }
 

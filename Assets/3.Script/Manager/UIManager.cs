@@ -44,14 +44,12 @@ public class UIManager : MonoBehaviour
     private Image[] images;
 
 
-
-
     public void isPlayerLifeIncrease(bool isAdd)
     {
         int currentLife = 0;
-        foreach(Image image in images)
+        foreach (Image image in images)
         {
-           if(image.enabled.Equals(true))
+            if (image.enabled.Equals(true))
             {
                 currentLife++;
             }
@@ -60,8 +58,9 @@ public class UIManager : MonoBehaviour
 
         if (isAdd)
         {
+            SoundManager.Instance.PlayGetHeart();
             if (currentLife.Equals(3)) return;
-            for(int i=0;i< images.Length; i++)
+            for (int i = 0; i < images.Length; i++)
             {
                 if (images[i].enabled.Equals(false))
                 {
@@ -69,11 +68,12 @@ public class UIManager : MonoBehaviour
                     break;
                 }
             }
-            
+
         }
         else
         {
-            for (int i = images.Length-1; i >=0; i--)
+            SoundManager.Instance.PlayLostHeart();
+            for (int i = images.Length - 1; i >= 0; i--)
             {
                 if (images[i].enabled.Equals(true))
                 {
@@ -96,10 +96,9 @@ public class UIManager : MonoBehaviour
     {
         //게임 종료 시 점수를 갱신하고, 게임 멈춤 및 스코어 창 비활성 + 게임 결과창 활성
         DataManager.Instance.afterGameOverRenewData(playerScore);
-        Time.timeScale = 0;
         Score_Text.gameObject.SetActive(false);
         gameResultUI.gameObject.SetActive(true);
-
+        GameObject.FindGameObjectWithTag("Player").gameObject.SetActive(false);
         setRankingUi();
     }
 
@@ -194,8 +193,12 @@ public class UIManager : MonoBehaviour
     //그래야 랭킹에 반영될 수 있습니다. 아직 연동 X 
     public void gameRestart()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Intro");
+    }
+    //게임 종료하는 함수
+    public void gameQuit()
+    {
+        Application.Quit();
     }
     enum RankUI
     {
@@ -229,33 +232,25 @@ public class UIManager : MonoBehaviour
                 }
                 yield return null;
             }
-           
+
         }
         else
         {
-            //페이드 인 점점 밝아지는 기능
+            //페이드 인 점점 밝아지는 기능 이었던것  --코루틴 중첩으로 인해 
+            // 페이드 효과 획득할 떄는 제거 -Queue로 관리하려 하였으나 부자연스럽
             image.enabled = true;
-            while (alpha < 1)
-            {
-                alpha += Time.deltaTime * fadeSpeed;
-                Color Bcolor = image.color;
-                Bcolor.a = alpha;
-                image.color = Bcolor;
 
-                //켜질 떄 자연스럽게 켜지게 하기 위해서
-                if (alpha > 0.3f)
-                {
-                    image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
+            alpha = 1;
+            Color Bcolor = image.color;
+            Bcolor.a = alpha;
+            image.color = Bcolor;
+            image.transform.GetChild(0).GetComponent<Image>().enabled = !image.enabled;
 
-                }
+            yield break;
 
-                yield return null;
-            }
-   
-           
 
         }
-   
+
 
     }
 }
