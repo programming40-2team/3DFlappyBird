@@ -12,17 +12,12 @@ public class CameraMoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(nameof(FindObjectWithScore_Co));
+        FindObjectWithScore_Co();
     }
 
-    IEnumerator FindObjectWithScore_Co()
+    void FindObjectWithScore_Co()
     {
-        while (true)
-        {
-            ScoreTube = GameObject.FindGameObjectsWithTag("Score").ToList();
-            yield return new WaitForSeconds(4.0f);
-        }
-
+        ScoreTube = GameObject.FindGameObjectsWithTag("Score").ToList();
     }
     IEnumerator MoveTowards_Co()
     {
@@ -54,7 +49,9 @@ public class CameraMoving : MonoBehaviour
         {
             if (ScoreTube.Contains(other.gameObject))
             {
+                FindObjectWithScore_Co();
                 ScoreTube.Remove(other.gameObject);
+
                 StartCoroutine(nameof(MoveTowards_Co));
             }
         }
